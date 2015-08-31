@@ -1,0 +1,36 @@
+{
+  "name": "rewrite-react-tutorial-to-coffee-and-jade",
+  "description": "react-tutorialをcoffeescript + react-jadeで書きなおしてみた",
+  "version": "1.0.0",
+  "author": "yukika",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yukikayuki/rewrite-react-tutorial-to-coffee-and-jade.git"
+  },
+  "scripts": {
+    "watch": "watchify -d src/index.coffee -o public/bundle.js",
+    "build": "browserify -d src/index.coffee -o public/bundle.js",
+    "server-setup": "git clone git@github.com:reactjs/react-tutorial.git; cp react-tutorial/server.rb ./"
+  },
+  "browserify": {
+    "transform": [
+      "coffeeify",
+      "react-jade"
+    ]
+  },
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^2.1.4",
+    "marked": "^0.3.5",
+    "react": "^0.13.3",
+    "react-jade": "^2.4.0"
+  },
+  "devDependencies": {
+    "browserify": "^11.0.1",
+    "coffeeify": "^1.1.0",
+    "watchify": "^3.3.1"
+  },
+  "browser": {
+    "vendor": "./src/vendor.coffee"
+  }
+}
